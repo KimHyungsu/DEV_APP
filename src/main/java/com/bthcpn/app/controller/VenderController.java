@@ -29,7 +29,7 @@ public class VenderController {
         System.out.println("VENDER_PW : " + venderPw);
 
         //세션초기화
-        session.setAttribute("chkVal", 0);
+        session.setAttribute("chkVal", null);
         String chkVal = venderService.loginVenderChk(venderId,venderPw);
         if(chkVal == null) {
             chkVal = "0";
@@ -58,6 +58,7 @@ public class VenderController {
 
         //모델에 주입
         model.addAttribute("chkVal", chkVal);
+        session.setAttribute("chkVal", null);
         System.out.println("loginVender : " + chkVal);
 
         return "login_vender";
