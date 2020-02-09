@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.bthcpn.app.mapper.VenderMapper">
+
+    <select id="loginVenderChk" resultType="string">
+        <!--SELECT user_account FROM CPNAPP.USER-->
+        select 1
+          from CPNAPP.VENDER
+         WHERE VENDER_ID = #{venderId}
+           AND VENDER_PW = #{venderPw}
+    </select>
+
+</mapper>

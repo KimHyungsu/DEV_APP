@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.bthcpn.app.mapper.UsrMapper">
+
+    <select id="usrInfo" resultType="com.bthcpn.app.dto.UsrInfo">
+        <!--SELECT user_account FROM CPNAPP.USER-->
+        select * from CPNAPP.USER_LOAN_INFO
+    </select>
+
+    <insert id="insertUsrInfo">
+      INSERT INTO CPNAPP.USER_LOAN_INFO
+        (
+              custNm
+            , email
+            , carrierCd
+            , carrierNm
+            , phoneNo
+            , jboCd
+            , jobNm
+            , incmAmt
+            , hopLoanAmt
+        )
+        VALUES
+        (
+              #{name}
+            , #{email}
+            , ' '
+            , ' '
+            , #{phone}
+            , ' '
+            , #{r1}
+            , #{inAmt}
+            , #{outAmt}
+        )
+    </insert>
+
+
+
+</mapper>
