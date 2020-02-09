@@ -1,13 +1,10 @@
 package com.bthcpn.app.controller;
 
 import com.bthcpn.app.dto.UsrInfo;
-import com.bthcpn.app.dto.VenderDto;
-import com.bthcpn.app.mapper.UsrMapper;
 import com.bthcpn.app.service.UsrService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,16 +31,14 @@ public class MainController {
     }
 
     //대출신청고객조회
-    @RequestMapping("/usrInfoTb")
-    public String usrInfo(Model model) throws Exception{
+    @RequestMapping("/loanAppList")
+    public String loanAppList(Model model) throws Exception{
         List<UsrInfo> usrInfo = usrService.usrInfo();
 
         model.addAttribute("usrInfo",usrInfo);
 
-        return "usrInfoTb";
+        return "loanAppList";
     }
-
-
 
 
     //신용한도조회

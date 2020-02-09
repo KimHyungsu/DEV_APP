@@ -45,7 +45,7 @@ public class VenderController {
         if(chkVal =="0"){
             return "redirect:/login_vender";
         }else{
-            return "redirect:/usrInfoTb";
+            return "redirect:/loanAppList";
         }
     }
 
