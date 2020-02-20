@@ -1,6 +1,7 @@
 package com.bthcpn.app.controller;
 
 
+import com.bthcpn.app.dto.UsrInfo;
 import com.bthcpn.app.dto.VenderDto;
 import com.bthcpn.app.service.VenderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class VenderController {
@@ -42,16 +44,23 @@ public class VenderController {
 
 
 
-        if(chkVal =="0"){
+        if(chkVal =="0"){//로그인실패시
             return "redirect:/login_vender";
-        }else{
-            return "redirect:/loanAppList";
+        }else{//로그인성공시
+            //return "redirect:/loanAppList";
+            return "choiceAdminMenu";
         }
+    }
+
+    //대출신청고객조회
+    @RequestMapping("/choiceAdminMenu")
+    public String choiceAdminMenu(Model model) throws Exception{
+        return "choiceAdminMenu";
     }
 
     //전문가/업체 로그인
     @RequestMapping("/login_vender")
-    public String loginVender(Model model, HttpSession session) throws Exception{
+    public String loginVender(Model model, HttpSession session) throws Exception {
 
         //세션 파라미터를 받아온다
         String chkVal = (String) session.getAttribute("chkVal");
@@ -62,7 +71,5 @@ public class VenderController {
         System.out.println("loginVender : " + chkVal);
 
         return "login_vender";
-
     }
-
 }
