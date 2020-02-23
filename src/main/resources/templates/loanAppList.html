@@ -10,6 +10,14 @@
 </head>
 <body>
 <!-- partial:index.partial.html -->
+<form class="form-wrapper" method="POST" action="/searchUsrInfo">
+<div class="container">
+  <h2>이름, 전화번호 등으로 검색해보세요</h2>
+  <input type="text" name="name" id="name" placeholder="Name">
+  <input type="text" name="phone" id="phone" placeholder="phone">
+  <input type="submit" value="검색">
+</div>
+</form>
 <div class="container">
   <h2>대출신청정보확인<small>실시간신청정보</small></h2>
   <ul class="responsive-table">

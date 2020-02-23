@@ -9,6 +9,18 @@
         select * from CPNAPP.USER_LOAN_INFO
     </select>
 
+    <select id="searchUsrInfo" resultType="Map">
+        select *
+          from CPNAPP.USER_LOAN_INFO
+         where 1=1
+        <if test="name != null and !name.equals('')">
+            AND custNm LIKE CONCAT('%',#{name},'%')
+        </if>
+        <if test="phone != null and !phone.equals('')">
+            AND phoneNo LIKE CONCAT('%',#{phone},'%')
+        </if>
+    </select>
+
     <insert id="insertUsrInfo">
       INSERT INTO CPNAPP.USER_LOAN_INFO
         (

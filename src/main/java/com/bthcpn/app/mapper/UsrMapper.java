@@ -21,4 +21,7 @@ public interface UsrMapper {
                         @Param("r1") String r1,
                         @Param("inAmt") String inAmt,
                         @Param("outAmt") String outAmt);
+
+    public List<UsrInfo> searchUsrInfo(@Param("name") String name,
+                                       @Param("phone") String phone) throws Exception;
 }

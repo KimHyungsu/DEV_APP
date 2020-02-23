@@ -30,4 +30,12 @@ public class UsrService {
         System.out.println("2. 서비스 진입(insertUser)");
         usrMapper.insertUsrInfo(name,email,phone,r1,inAmt,outAmt);
     }
+
+
+    public List<UsrInfo>  searchUsrInfo(String name, String phone) throws Exception{
+        System.out.println("(Service)searchUsrInfo=============================");
+        System.out.println("name : " + name);
+        System.out.println("phone : " + phone);
+        return usrMapper.searchUsrInfo(name, phone);
+    }
 }

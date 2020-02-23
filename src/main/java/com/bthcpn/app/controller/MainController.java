@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -35,8 +36,6 @@ public class MainController {
     public String loanAppList(Model model) throws Exception{
         List<UsrInfo> usrInfo = usrService.usrInfo();
 
-        model.addAttribute("usrInfo",usrInfo);
-
         return "loanAppList";
     }
 
@@ -47,9 +46,11 @@ public class MainController {
         return "entSaveUsrInfo";
     }
 
-
-
-
+    //어드민페이지
+    @RequestMapping("/adminPageHome")
+    public String adminPageHome() throws Exception{
+        return "adminPageHome";
+    }
 
     @RequestMapping(value = "/sendSaveUsrInfo", method= RequestMethod.POST)
     public String sendSaveUsrInfo(@RequestParam("name") String name,
@@ -62,19 +63,32 @@ public class MainController {
         System.out.println(name+email+phone+inAmt+outAmt+r1);
 
         usrService.insertUsrInfo(name, email, phone, r1, inAmt, outAmt);
-        /*
-        model.addAttribute("name",name);
-        model.addAttribute("email",email);
-        model.addAttribute("phone",phone);
-        model.addAttribute("inAmt",inAmt);
-        model.addAttribute("outAmt",outAmt);
-         */
+
         return "entSaveUsrInfoCfm";
     }
 
     @RequestMapping("/entLoanInfo")
     public String hello() throws Exception{
         return "entLoanInfo";
+    }
+
+    //사용자검색
+    @RequestMapping(value = "/searchUsrInfo", method= RequestMethod.POST)
+    public String searchUsrInfo(@RequestParam("name") String name,
+                                @RequestParam("phone") String phone,
+                                Model model) throws Exception{
+
+
+        System.out.println("[searchUsrInfo] 이름 : " + name + ", 전화번호 : " + phone);
+
+        List<UsrInfo> usrInfo =  usrService.searchUsrInfo(name,phone);
+
+        //model.addAttribute("usrInfo",usrInfo);
+
+        System.out.println(usrService.searchUsrInfo(name,phone).toString());
+        model.addAttribute("usrInfo",usrInfo);
+
+        return "loanAppList";
     }
 
 
