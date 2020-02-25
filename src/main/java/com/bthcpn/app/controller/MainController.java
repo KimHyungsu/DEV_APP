@@ -34,7 +34,7 @@ public class MainController {
     //대출신청고객조회
     @RequestMapping("/loanAppList")
     public String loanAppList(Model model) throws Exception{
-        List<UsrInfo> usrInfo = usrService.usrInfo();
+        //List<UsrInfo> usrInfo = usrService.usrInfo();
 
         return "loanAppList";
     }

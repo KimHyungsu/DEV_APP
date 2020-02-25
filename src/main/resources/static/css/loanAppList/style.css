@@ -1,13 +1,134 @@
 body {
-  font-family: 'lato', sans-serif;
+  /*font-family: "Open Sans", sans-serif;*/
+  font-family: 'Nanum Gothic, sans-serif';
+  line-height: 1.25;
 }
 .container {
   max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
+  margin:0 auto;
   padding-left: 10px;
   padding-right: 10px;
   text-align: center;
+}
+
+.pagination {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  /*display: flex;*/
+}
+ul {
+  text-align:center;
+}
+ul li {
+  display:inline;
+  vertical-align:middle;
+}
+ul li a {
+  display:-moz-inline-stack;	/*FF2*/
+  display:inline-block;
+  vertical-align:top;
+  padding:4px;
+  margin-right:3px;
+  width:15px !important;
+  color:#000;
+  font:bold 12px tahoma;
+  border:1px solid #eee;
+  text-align:center;
+  text-decoration:none;
+  width /**/:26px;	/*IE 5.5*/
+
+}
+ul li a.now {
+  color:#fff;
+  background-color:#f40;
+  border:1px solid #f40;
+}
+ul li a:hover, ul li a:focus {
+  color:#fff;
+  border:1px solid #f40;
+  background-color:#f40;
+}
+
+
+.hr_st{
+  border: 0px; /*그림자 삭제*/
+  height: 2px;
+  background-color: #6C7A89;
+}
+
+.input_text{
+  height: 35px;
+  width: 200px;
+  border:2px solid #aaa;
+  border-radius: 4px;
+  margin:8px 0;
+  outline: none;
+  padding: 8px;
+  box-sizing: border-box;
+  transition: .3s;
+}:focus{
+  border-color: dodgerblue;
+  box-shadow: 0 0 8px 0 dodgerblue;
+}
+
+.input_select{
+  font-size: 12px;
+  /*font-weight: bold;*/
+  height: 35px;
+  width: 200px;
+  border:2px solid #aaa;
+  border-radius: 4px;
+  margin:8px 0;
+  outline: none;
+  padding: 8px;
+  box-sizing: border-box;
+  transition: .3s;
+
+}:focus{
+   border-color: dodgerblue;
+   box-shadow: 0 0 8px 0 dodgerblue;
+ }
+
+.input_blue_button {
+
+  /*height: 35px;*/
+  width: 150px;
+  border: solid 2px #328cca;
+  border-radius: 4px;
+  padding: 8px;
+  outline: none;
+  box-sizing: border-box;
+  font-size: 12px;
+
+  /*border-radius*/
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+
+  color: #fff;
+
+  background-image: -moz-linear-gradient(top, #3798db, #2c7cd2);
+  background-image: -o-linear-gradient(top, #3798db, #2c7cd2);
+  background-image: -ms-linear-gradient(top, #3798db, #2c7cd2);
+  background-image: -webkit-linear-gradient(top, #3798db, #2c7cd2);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #3798db), color-stop(1, #2c7cd2));
+  filter:"progid:DXImageTransform.Microsoft.gradient(startColorStr=#3798db, EndColorStr=#2c7cd2)";
+  background-image: linear-gradient(top, #3798db, #2c7cd2);
+  background-color: #2b96f1;
+
+  /*box-shadow*/
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer
+}
+.input_blue_button:hover {
+  background-image: -moz-linear-gradient(top, #3fadf9, #3493f9);
+  background-image: -o-linear-gradient(top, #3fadf9, #3493f9);
+  background-image: -webkit-linear-gradient(top, #3fadf9, #3493f9);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #3fadf9), color-stop(1, #3493f9));
+  filter:"progid:DXImageTransform.Microsoft.gradient(startColorStr=#3fadf9, EndColorStr=#3493f9)";
+  background-image: linear-gradient(top, #3fadf9, #3493f9)
 }
 
 h2 {
@@ -19,74 +140,89 @@ h2 small {
   font-size: 0.5em;
 }
 
-.responsive-table li {
-  border-radius: 3px;
-  padding: 25px 30px;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 25px;
+table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
 }
-.responsive-table .table-header {
-  background-color: #333333;
-  font-size: 14px;
+
+table caption {
+  font-size: 1.5em;
+  margin: .5em 0 .75em;
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+  border-spacing: 10px;
+}
+th:nth-child(1){width:70px;}
+th:nth-child(2){width:100px;}
+th:nth-child(3){width:200px;}
+th:nth-child(4){width:50px;}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
 }
-.responsive-table .table-row {
-  background-color: #E6E6E6;
-  box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
-}
-.responsive-table .col-1 {
-  flex-basis: 10%;
-  text-align: center;
-}
-.responsive-table .col-2 {
-  flex-basis: 15%;
-  text-align: center;
-}
-.responsive-table .col-3 {
-  flex-basis: 30%;
-  text-align: center;
-}
-.responsive-table .col-4 {
-  flex-basis: 15%;
-  text-align: center;
-}
-.responsive-table .col-5 {
-  flex-basis: 20%;
-  text-align: center;
-}
-.responsive-table .col-6 {
-  flex-basis: 15%;
-  text-align: center;
-}
-.responsive-table .col-7 {
-  flex-basis: 15%;
-  text-align: center;
-}
-.responsive-table .col-8 {
-  flex-basis: 15%;
-  text-align: center;
-}
-@media all and (max-width: 767px) {
-  .responsive-table .table-header {
-    display: none;
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
   }
-  .responsive-table li {
+
+  table caption {
+    font-size: 1.3em;
+  }
+
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  table tr {
+    border-bottom: 3px solid #ddd;
     display: block;
+    margin-bottom: .625em;
   }
-  .responsive-table .col {
-    flex-basis: 100%;
-  }
-  .responsive-table .col {
-    display: flex;
-    padding: 10px 0;
-  }
-  .responsive-table .col:before {
-    color: #6C7A89;
-    padding-right: 10px;
-    content: attr(data-label);
-    flex-basis: 50%;
+
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
     text-align: right;
+  }
+
+
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  table td:last-child {
+    border-bottom: 0;
   }
 }

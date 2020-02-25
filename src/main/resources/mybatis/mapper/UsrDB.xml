@@ -19,6 +19,7 @@
         <if test="phone != null and !phone.equals('')">
             AND phoneNo LIKE CONCAT('%',#{phone},'%')
         </if>
+        order by 1 desc
     </select>
 
     <insert id="insertUsrInfo">
