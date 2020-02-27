@@ -6,24 +6,11 @@ body {
   height: 100%;
 }
 .container {
-
   max-width: 1000px;
   margin:0 auto;
   padding-left: 10px;
   padding-right: 10px;
   text-align: center;
-
-
-  /*
-  position: absolute;
-  width: 1000px;
-  height: 400px;
-  left: 50%;
-  top: 50%;
-  margin-left: -500px;
-  margin-top: -200px;
-  text-align: center;
-  */
 }
 
 .pagination {
@@ -232,7 +219,6 @@ table th {
   letter-spacing: .1em;
   text-transform: uppercase;
 }
-
 @media screen and (max-width: 600px) {
   table {
     border: 0;
