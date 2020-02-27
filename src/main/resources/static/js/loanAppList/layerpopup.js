@@ -60,7 +60,7 @@ function layer_popup(el){
                 $('.dim-layer').fadeOut();
                 sendData  = "";
                 location.reload();
-                return true;
+                //return false;
                 //alert("ajax");
             },
             error: function(){
