@@ -33,7 +33,6 @@ function layer_popup(el){
 
     $el.find('a.btn-layerSave').click(function(){
         //alert('저장');
-
         var sendData = {
             "BASE_DT" : $('#sDate').val() ,
             "CUST_NM" : $('#sName').val(),
@@ -53,6 +52,7 @@ function layer_popup(el){
             url: "insertCheat",
             type: "POST",
             data:  sendData,
+            async: false, //동기처리
             dataType : "json",
             //contentType : "application/json; charset=utf-8",
             success: function(data){
