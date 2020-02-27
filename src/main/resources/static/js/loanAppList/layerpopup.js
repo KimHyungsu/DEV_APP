@@ -58,7 +58,9 @@ function layer_popup(el){
             success: function(data){
                 //성공시 창을 닫는다
                 $('.dim-layer').fadeOut();
-                return false;
+                sendData  = "";
+                location.reload();
+                return true;
                 //alert("ajax");
             },
             error: function(){
