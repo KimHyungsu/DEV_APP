@@ -6,24 +6,76 @@
   <title>대출신청정보확인</title>
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
   <link rel="stylesheet" href="/../../css/loanAppList/style.css">
+  <link rel="stylesheet" href="/../../css/loanAppList/layerpopup.css">
   <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
 
 </head>
 <body>
 <!-- partial:index.partial.html -->
-<form class="form-wrapper" method="POST" action="/searchUsrInfo">
+<!-- test
+<input type="text" class="input_text" name="name" id="name2" placeholder="Name">
+<input type="text" class="input_text" name="phone" id="phone2" placeholder="phone">
+<input type="button" class="input_blue_button" value="검색2" id="btn-save">
+<div id="usrInfo2"></div>
+-->
+<!--<form class="form-wrapper" method="POST" action="/searchUsrInfo2">-->
+
 <div class="container">
+  <br>
+  <br>
   <h2>이름, 전화번호 등으로 검색해보세요</h2>
   <input type="text" class="input_text" name="name" id="name" placeholder="Name">
   <input type="text" class="input_text" name="phone" id="phone" placeholder="phone">
-  <input type="submit" class="input_blue_button" value="검색">
-</div>
-</form>
-<div class="container">
+  <br>
+  <!--<input type="submit" class="input_blue_button" value="검색">-->
+  <input type="button" class="input_blue_button" value="검색" id="btn-search">
+  <input type="button" href="#layer2" class="btn-custsave" value="고객등록">
+  <br>
+  <div class="dim-layer">
+    <div class="dimBg"></div>
+    <div id="layer2" class="pop-layer">
+      <div class="pop-container">
+        <div class="pop-conts">
+          <!--content //-->
+          <h3>고객등록</h3>
+            <input type="date" class="input_select" name="sDate" id="sDate" value="YYYY-MM-DD" placeholder="신청날짜"><br>
+            <input type="text" class="input_text" name="sName" id="sName" placeholder="이름"><br>
+            <input type="text" class="input_text" name="sPhone" id="sPhone" placeholder="전화번호"><br>
+            <select name="sWireAgency" id="sWireAgency" class="input_select">
+              <option value="">통신사</option>
+              <option value="ing">SKT</option>
+              <option value="done">KT</option>
+              <option value="done">LGU+</option>
+              <option value="done">기타</option>
+            </select><br>
+            <select name="sIngYn" id="sIngYn" class="input_select">
+              <option value="">진행여부</option>
+              <option value="ing">진행중</option>
+              <option value="done">완료</option>
+              <option value="done">사기</option>
+            </select><br>
+            <select name="sCountry"  id="sCountry" class="input_select">
+              <option value="">지역</option>
+              <option value="SKT">서울</option>
+              <option value="KT">경기</option>
+              <option value="LGU+">대전</option>
+              <option value="기타">대구</option>
+              <option value="기타">부산</option>
+              <option value="기타">기타</option>
+            </select><br>
+          </p>
+          <div class="btn-r">
+            <a href="#" class="btn-layerSave" id="btn-layerSave">등록</a>
+            <a href="#" class="btn-layerClose">닫기</a>
+          </div>
+          <!--// content-->
+        </div>
+      </div>
+    </div>
+  </div>
   <hr class="hr_st"/>
-  <table class="table table-bordered table-hover">
-    <caption>대출신청정보확인</caption>
+  <table id="table" class="table table-bordered table-hover">
     <thead>
     <tr>
       <th scope="col">신청순번</th>
@@ -36,59 +88,13 @@
       <th scope="col">희망대출금액</th>
     </tr>
     </thead>
-    <tbody>
-    <tr th:each = "l : ${usrInfo}" class="table-row">
-      <td th:text="${l.seq}" class="col col-1" data-label="신청순번"></td>
-      <td th:text="${l.custNm}" class="col col-2" data-label="고객명"></td>
-      <td th:text="${l.email}" class="col col-3" data-label="이메일"></td>
-      <td th:text="SKT" class="col col-4" data-label="통신사"></td>
-      <td th:text="${l.phoneNo}" class="col col-5" data-label="휴대전화번호"></td>
-      <td th:text="${l.jobNm}" class="col col-6" data-label="직업"></td>
-      <td th:text="${l.incmAmt}" class="col col-7" data-label="소득금액"></td>
-      <td th:text="${l.hopLoanAmt}" class="col col-8" data-label="희망대출금액"></td>
-    </tr>
-    </tbody>
   </table>
-  <ul class="pagination"></ul>
+  <ul class="pagination" id="pagination"></ul>
 </div>
-
-<form class="form-wrapper" method="POST" action="">
-  <div class="container">
-    <hr class="hr_st"/>
-    <h2>고객등록</h2>
-    <input type="text" class="input_text" name="name" id="z1" placeholder="Name">
-    <input type="text" class="input_text" name="email" id="z2" placeholder="email">
-    <br>
-    <input type="text" class="input_text" name="phone" id="z3" placeholder="phone">
-    <select name="carrier" class="input_select">
-      <option value="">통신사</option>
-      <option value="SKT">SKT</option>
-      <option value="KT">KT</option>
-      <option value="LGU+">LGU+</option>
-      <option value="기타">기타</option>
-    </select>
-    <br>
-    <input type="text" class="input_text" name="inAmt" id="inAmt" placeholder="소득 금액">
-    <input type="text" class="input_text" name="outAmt" id="outAmt" placeholder="희망 대출금액">
-    <br>
-    <select name="ingYn" class="input_select">
-      <option value="">진행여부</option>
-      <option value="ing">진행중</option>
-      <option value="done">완료</option>
-    </select>
-    <select name="country" class="input_select">
-      <option value="">지역</option>
-      <option value="SKT">서울</option>
-      <option value="KT">경기</option>
-      <option value="LGU+">대전</option>
-      <option value="기타">대구</option>
-      <option value="기타">부산</option>
-    </select>
-    <br>
-    <input type="submit" class="input_blue_button" value="고객등록">
-  </div>
-</form>
+<!--</form>-->
 <!-- partial -->
 <script type="text/javascript" src="/../../../js/loanAppList/index.js"></script>
+<script type="text/javascript" src="/../../../js/loanAppList/layerpopup.js"></script>
+<script type="text/javascript" src="/../../../js/loanAppList/main.js"></script>
 </body>
 </html>
