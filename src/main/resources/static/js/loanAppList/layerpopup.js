@@ -5,6 +5,7 @@ $('.btn-custsave').click(function(){
 
 function layer_popup(el){
 
+
     var $el = $(el);        //레이어의 id를 $el 변수에 저장
     var isDim = $el.prev().hasClass('dimBg');   //dimmed 레이어를 감지하기 위한 boolean 변수
 
@@ -34,21 +35,30 @@ function layer_popup(el){
         //alert('저장');
 
         var sendData = {
-            "sDate" : $('#sDate').val() ,
-            "sName" : $('#sName').val(),
-            "sPhone" : $('#sPhone').val(),
-            "sWireAgency" : $('#sWireAgency').val(),
-            "sIngYn" : $('#sIngYn').val(),
-            "sCountry" : $('#sCountry').val()
+            "BASE_DT" : $('#sDate').val() ,
+            "CUST_NM" : $('#sName').val(),
+            "PHONE_NO" : $('#sPhone').val(),
+            "BIRTH_YMD" : $('#sBirthYMD').val(),
+            "SALARY_DIV_NM" : $('#sSalaryDiv').val(),
+            "ING_DIV_NM" : $('#sIngYn').val(),
+            "COUNTRY_NM" : $('#sCountry').val(),
+            "INCOME_AMT" : $('#sIncomeAmt').val(),
+            "OUT_AMT" : $('#sOutAmt').val(),
+            "MEMO" : $('#sMemo').val(),
+            "RGST_ID" : "TEST",//$('#sCountry').val(),
+            "CHNG_ID" : "TEST"//$('#sCountry').val(),
+
         }
         $.ajax({
-            url: "saveCustRgst",
+            url: "insertCheat",
             type: "POST",
             data:  sendData,
             dataType : "json",
             //contentType : "application/json; charset=utf-8",
             success: function(data){
-
+                //성공시 창을 닫는다
+                $('.dim-layer').fadeOut();
+                return false;
                 //alert("ajax");
             },
             error: function(){

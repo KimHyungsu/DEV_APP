@@ -1,10 +1,10 @@
 $('#btn-search').on('click', function(){
     var sendData = {
-        "name" : $('#name').val() ,
-        "phone" : $('#phone').val()
+        "CUST_NM" : $('#CUST_NM').val() ,
+        "PHONE_NO" : $('#PHONE_NO').val()
     }
     $.ajax({
-        url: "searchUsrInfo2",
+        url: "searchCheat",
         type: "POST",
         data:  sendData,
         dataType : "json",
@@ -12,19 +12,38 @@ $('#btn-search').on('click', function(){
         success: function(data){
 
             var tableData ="";
-            console.log(data);
 
+            console.log(data);
+            tableData += '    <thead>\n' +
+                            '     <tr>\n' +
+                            '      <th scope="col">등록순번</th>\n' +
+                            '      <th scope="col">기준일자</th>\n' +
+                            '      <th scope="col">고객명</th>\n' +
+                            '      <th scope="col">휴대전화번호</th>\n' +
+                            '      <th scope="col">생년월일</th>\n' +
+                            '      <th scope="col">소득구분명</th>\n' +
+                            '      <th scope="col">진행구분명</th>\n' +
+                            '      <th scope="col">지역명</th>\n' +
+                            '      <th scope="col">소득금액</th>\n' +
+                            '      <th scope="col">대출금액</th>\n' +
+                            '      <th scope="col">메모</th>\n' +
+                            '    </tr>\n' +
+                            '    </thead>' +
+                '';
             tableData += '<tbody>';
             $.each(data, function(index, value){
                 tableData += '<tr>';
-                tableData += '<td class="col col-1" data-label="신청순번">'+value.seq+'</td>';
-                tableData += '<td class="col col-2" data-label="고객명">'+value.custNm+'</td>';
-                tableData += '<td class="col col-3" data-label="이메일">'+value.email+'</td>';
-                tableData += '<td class="col col-4" data-label="통신사">'+'SKT'+'</td>';
-                tableData += '<td class="col col-5" data-label="휴대전화번호">'+value.phoneNo+'</td>';
-                tableData += '<td class="col col-6" data-label="직업">'+value.jobNm+'</td>';
-                tableData += '<td class="col col-7" data-label="소득금액">'+value.incmAmt+'</td>';
-                tableData += '<td class="col col-8" data-label="희망대출금액">'+value.hopLoanAmt+'</td>';
+                tableData += '<td class="col col-1" data-label="순번">'+value.SEQ+'</td>';
+                tableData += '<td class="col col-2" data-label="기준일자">'+value.BASE_DT+'</td>';
+                tableData += '<td class="col col-3" data-label="고객명">'+value.CUST_NM+'</td>';
+                tableData += '<td class="col col-4" data-label="휴대전화번호">'+value.PHONE_NO+'</td>';
+                tableData += '<td class="col col-5" data-label="생년월일">'+value.BIRTH_YMD+'</td>';
+                tableData += '<td class="col col-6" data-label="소득구분명">'+value.SALARY_DIV_NM+'</td>';
+                tableData += '<td class="col col-7" data-label="진행구분명">'+value.ING_DIV_NM+'</td>';
+                tableData += '<td class="col col-8" data-label="지역명">'+value.COUNTRY_NM+'</td>';
+                tableData += '<td class="col col-9" data-label="소득금액">'+value.INCOME_AMT+'</td>';
+                tableData += '<td class="col col-10" data-label="대출금액">'+value.OUT_AMT+'</td>';
+                tableData += '<td class="col col-11" data-label="메모">'+value.MEMO+'</td>';
                 tableData += '<tr>';
             });
             tableData += '</tbody>';
@@ -33,7 +52,8 @@ $('#btn-search').on('click', function(){
             $("#pagination").empty();
 
             $("#table").append(tableData);
-            pagination();;
+            pagination();
+
             //$("#usrInfo").append(data);
         },
         error: function(){

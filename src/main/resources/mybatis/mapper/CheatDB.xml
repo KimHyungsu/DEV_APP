@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.bthcpn.app.mapper.CheatMapper">
+
+    <select id="searchCheat" resultType="Map">
+        select *
+        from CPNAPP.USER_CHEAT
+        where 1=1
+        <if test="CUST_NM != null and !CUST_NM.equals('')">
+            AND CUST_NM LIKE CONCAT('%',#{CUST_NM},'%')
+        </if>
+        <if test="PHONE_NO != null and !PHONE_NO.equals('')">
+            AND PHONE_NO LIKE CONCAT('%',#{PHONE_NO},'%')
+        </if>
+        order by 1 desc
+    </select>
+
+    <insert id="insertCheat">
+        INSERT INTO CPNAPP.USER_CHEAT
+        (    BASE_DT
+            ,CUST_NM
+            ,PHONE_NO
+            ,BIRTH_YMD
+            ,SALARY_DIV_NM
+            ,ING_DIV_NM
+            ,COUNTRY_NM
+            ,INCOME_AMT
+            ,OUT_AMT
+            ,MEMO
+            ,RGST_ID
+            ,CHNG_ID
+        )
+        VALUES
+        (
+            #{BASE_DT}
+            ,#{CUST_NM}
+            ,#{PHONE_NO}
+            ,#{BIRTH_YMD}
+            ,#{SALARY_DIV_NM}
+            ,#{ING_DIV_NM}
+            ,#{COUNTRY_NM}
+            ,#{INCOME_AMT}
+            ,#{OUT_AMT}
+            ,#{MEMO}
+            ,#{RGST_ID}
+            ,#{CHNG_ID}
+        )
+    </insert>
+
+
+</mapper>

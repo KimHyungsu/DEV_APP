@@ -3,9 +3,10 @@
       xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" xmlns:tr="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width; initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>대출신청정보확인</title>
-  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
   <link rel="stylesheet" href="/../../css/loanAppList/style.css">
   <link rel="stylesheet" href="/../../css/loanAppList/layerpopup.css">
   <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -14,20 +15,14 @@
 </head>
 <body>
 <!-- partial:index.partial.html -->
-<!-- test
-<input type="text" class="input_text" name="name" id="name2" placeholder="Name">
-<input type="text" class="input_text" name="phone" id="phone2" placeholder="phone">
-<input type="button" class="input_blue_button" value="검색2" id="btn-save">
-<div id="usrInfo2"></div>
--->
 <!--<form class="form-wrapper" method="POST" action="/searchUsrInfo2">-->
 
 <div class="container">
   <br>
   <br>
   <h2>이름, 전화번호 등으로 검색해보세요</h2>
-  <input type="text" class="input_text" name="name" id="name" placeholder="Name">
-  <input type="text" class="input_text" name="phone" id="phone" placeholder="phone">
+  <input type="text" class="input_text" name="CUST_NM" id="CUST_NM" placeholder="Name">
+  <input type="text" class="input_text" name="PHONE_NO" id="PHONE_NO" placeholder="phone">
   <br>
   <!--<input type="submit" class="input_blue_button" value="검색">-->
   <input type="button" class="input_blue_button" value="검색" id="btn-search">
@@ -40,31 +35,34 @@
         <div class="pop-conts">
           <!--content //-->
           <h3>고객등록</h3>
-            <input type="date" class="input_select" name="sDate" id="sDate" value="YYYY-MM-DD" placeholder="신청날짜"><br>
+            <input type="date" class="input_select" name="sDate" id="sDate"  placeholder="신청날짜"><br>
             <input type="text" class="input_text" name="sName" id="sName" placeholder="이름"><br>
             <input type="text" class="input_text" name="sPhone" id="sPhone" placeholder="전화번호"><br>
-            <select name="sWireAgency" id="sWireAgency" class="input_select">
-              <option value="">통신사</option>
-              <option value="ing">SKT</option>
-              <option value="done">KT</option>
-              <option value="done">LGU+</option>
-              <option value="done">기타</option>
+            <input type="text" class="input_text" name="sBirthYMD" id="sBirthYMD" placeholder="생년월일(YYYYMMDD)"><br>
+          <input type="text" class="input_text" name="sIncomeAmt" id="sIncomeAmt" placeholder="소득금액(만원)"><br>
+          <input type="text" class="input_text" name="sOutAmt" id="sOutAmt" placeholder="대출금액(만원)"><br>
+            <select name="sSalaryDiv" id="sSalaryDiv" class="input_select">
+              <option value="">소득구분</option>
+              <option value="자영업">자영업</option>
+              <option value="직장인">직장인</option>
+              <option value="기타">기타</option>
             </select><br>
             <select name="sIngYn" id="sIngYn" class="input_select">
               <option value="">진행여부</option>
-              <option value="ing">진행중</option>
-              <option value="done">완료</option>
-              <option value="done">사기</option>
+              <option value="진행중">진행중</option>
+              <option value="완료">완료</option>
+              <option value="사기">사기</option>
             </select><br>
             <select name="sCountry"  id="sCountry" class="input_select">
               <option value="">지역</option>
-              <option value="SKT">서울</option>
-              <option value="KT">경기</option>
-              <option value="LGU+">대전</option>
-              <option value="기타">대구</option>
-              <option value="기타">부산</option>
+              <option value="서울">서울</option>
+              <option value="경기">경기</option>
+              <option value="대전">대전</option>
+              <option value="대구">대구</option>
+              <option value="부산">부산</option>
               <option value="기타">기타</option>
             </select><br>
+            <input type="text" class="input_text" name="sMemo" id="sMemo" placeholder="메모"><br>
           </p>
           <div class="btn-r">
             <a href="#" class="btn-layerSave" id="btn-layerSave">등록</a>
@@ -77,24 +75,28 @@
   </div>
   <hr class="hr_st"/>
   <table id="table" class="table table-bordered table-hover">
+    <!--
     <thead>
     <tr>
-      <th scope="col">신청순번</th>
+      <th scope="col">기준일자</th>
       <th scope="col">고객명</th>
-      <th scope="col">이메일</th>
-      <th scope="col">통신사</th>
       <th scope="col">휴대전화번호</th>
-      <th scope="col">직업</th>
+      <th scope="col">생년월일</th>
+      <th scope="col">소득구분명</th>
+      <th scope="col">진행구분명</th>
+      <th scope="col">지역명</th>
       <th scope="col">소득금액</th>
-      <th scope="col">희망대출금액</th>
+      <th scope="col">대출금액</th>
+      <th scope="col">메모</th>
     </tr>
     </thead>
+    -->
   </table>
   <ul class="pagination" id="pagination"></ul>
 </div>
 <!--</form>-->
 <!-- partial -->
-<script type="text/javascript" src="/../../../js/loanAppList/index.js"></script>
+<!--<script type="text/javascript" src="/../../../js/loanAppList/index.js"></script>-->
 <script type="text/javascript" src="/../../../js/loanAppList/layerpopup.js"></script>
 <script type="text/javascript" src="/../../../js/loanAppList/main.js"></script>
 </body>
