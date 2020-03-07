@@ -1,11 +1,15 @@
 package com.bthcpn.app.config;
 
+import com.bthcpn.app.handler.LoginFailureHandler;
+import com.bthcpn.app.handler.LoginSuccessHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -27,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/**/*.ico").permitAll()
                     .antMatchers("/**/*.png").permitAll()
                     .antMatchers("/**/*.jpg").permitAll()
-                    .antMatchers("/index", "/choiceAdminMenu", "/signup_vender").permitAll()
+                    .antMatchers("/index", "/choiceAdminMenu", "/signup_vender", "/signup_venderChk").permitAll()
                     .antMatchers("/cheatPage").hasRole("MEMBER")
                     //.antMatchers("/cheatPage","/admin").hasRole("ADMIN")
                     .anyRequest()
@@ -37,6 +41,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .loginPage("/login_vender") //로그인페이지경로
                     .loginProcessingUrl("/login")
                     .defaultSuccessUrl("/index",true)
+                    .successHandler(successHandler()) //로그인 성공시 핸들
+                    .failureHandler(failureHandler()) //로그인 실패시 핸들
                     //.failureUrl("/login_vender?error=true")
                     .permitAll()
                 .and()
@@ -58,8 +64,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public PasswordEncoder passwordEncoder(){
-
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
+
+    //로그인 성공 빈 주입
+    @Bean
+    public AuthenticationSuccessHandler successHandler() {
+        return new LoginSuccessHandler();
+    }
+
+    //로그인 실패 빈 주
+    @Bean
+    public AuthenticationFailureHandler failureHandler() {
+        return new LoginFailureHandler();
+    }
 }

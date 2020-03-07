@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bthcpn.app.mapper.LogsMapper">
+
+    <insert id="insertLog">
+        <!--INSERT INTO CPNAPP.MEMBER VALUES(#{account.id},#{account.password},#{account.isAccountNonExpired},#{account.isAccountNonLocked},#{account.isCredentialsNonExpired},#{account.isEnabled})-->
+        INSERT INTO CPNAPP.LOGS
+        (
+            LOG_DT,
+            LOG_DIV_NM,
+            LOG_CTNT,
+            PROCESS_NM,
+            MEMBER_ID,
+            IP_ADDR,
+            RGST_ID,
+            RGST_DTTM
+        )
+        VALUES
+        (
+            date_format(now(),'%Y%m%d'),
+            #{logsDto.LOG_DIV_NM},
+            #{logsDto.LOG_CTNT},
+            #{logsDto.PROCESS_NM},
+            #{logsDto.MEMBER_ID},
+            #{logsDto.IP_ADDR},
+            #{logsDto.RGST_ID},
+            #{logsDto.RGST_DTTM}
+        )
+    </insert>
+
+
+</mapper>

@@ -74,6 +74,14 @@ public class AccountService implements UserDetailsService {
         //return account;
     }
 
+    public String SaveLoginLog(Account account){
+
+        int isSuccess;
+
+
+        return "";
+    }
+
     public String save(Account account, String role){
         account.setPassword(passwordEncoder.encode(account.getPassword()));
         account.setAccountNonExpired(true);

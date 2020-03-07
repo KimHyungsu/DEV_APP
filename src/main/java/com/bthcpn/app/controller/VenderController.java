@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
@@ -98,7 +99,8 @@ public class VenderController {
 
 
     //회원가입
-    @RequestMapping("/signup_venderChk")
+    //@RequestMapping("/signup_venderChk")
+    @RequestMapping(value = "/signup_venderChk", method= RequestMethod.POST)
     public String signup_venderChk(@RequestParam("COMPANY_NM") String companyNm,
                                    @RequestParam("VENDER_ID") String venderId,
                                    @RequestParam("VENDER_PW") String venderPw,
@@ -133,21 +135,6 @@ public class VenderController {
         }
     }
 
-    //회원가입
-    @RequestMapping("/signup_venderChk2")
-    public String signup_venderChk2(@RequestParam("COMPANY_NM") String companyNm,
-                                   @RequestParam("VENDER_ID") String venderId,
-                                   @RequestParam("VENDER_PW") String venderPw,
-                                   Model model
-            , HttpSession session) throws Exception {
-
-        System.out.println("(Controller)signup_venderChk=============================");
-        System.out.println("COMPANY_NM : " + companyNm);
-        System.out.println("VENDER_ID : " + venderId);
-        System.out.println("VENDER_PW : " + venderPw);
-
-        return "redirect:/login_vender";
-    }
 
         //회원가입
     @RequestMapping("/signup_vender")
@@ -159,8 +146,9 @@ public class VenderController {
 
         if(!principal.equals("anonymousUser")){
             System.out.println("회원임ㅋㅋ");
-            UserDetails userDetails = (UserDetails)principal;
-            System.out.println(userDetails.getUsername());
+            //이게 있으면 post action이 안먹음....
+            //UserDetails userDetails = (UserDetails)principal;
+            //System.out.println(userDetails.getUsername());
             return "redirect:/index";
         }
 

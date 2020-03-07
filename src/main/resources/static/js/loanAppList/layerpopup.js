@@ -72,6 +72,13 @@ function layer_popup(el){
             error: function(){
                 alert("simpleWithObject err");
                 //location.reload();
+            },
+            beforeSend:function(){
+                //progress image open
+                target.appendChild(spinner.el);
+            },
+            complete:function(){
+                //progress image close
             }
         });
 
