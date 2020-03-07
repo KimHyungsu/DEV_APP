@@ -1,4 +1,4 @@
-package com.bthcpn.app.db;
+package com.bthcpn.app.config;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;

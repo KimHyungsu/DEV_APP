@@ -3,11 +3,18 @@ $('#btn-search').on('click', function(){
         "CUST_NM" : $('#CUST_NM').val() ,
         "PHONE_NO" : $('#PHONE_NO').val()
     }
+    var token = $("meta[name='_csrf']").attr("content");
+    var header = $("meta[name='_csrf_header']").attr("content");
     $.ajax({
         url: "searchCheat",
         type: "POST",
         data:  sendData,
         dataType : "json",
+        beforeSend : function(xhr)
+        {
+            xhr.setRequestHeader(header,token);
+        },
+        //setRequestHeader : header, token,
         //contentType : "application/json; charset=utf-8",
         success: function(data){
 
@@ -65,9 +72,9 @@ $('#btn-search').on('click', function(){
 
 
 function pagination(){
-    var req_num_row=10;
+    var req_num_row=30;
     var $tr=jQuery('tbody tr');
-    var total_num_row=$tr.length/2; //이상함..........length가 2배로나옴 ㅡㅡ
+    var total_num_row=$tr.length;
     var num_pages=0;
     console.log(total_num_row);
     if(total_num_row % req_num_row ==0){
@@ -77,17 +84,19 @@ function pagination(){
         num_pages=total_num_row / req_num_row;
         num_pages++;
         num_pages=Math.floor(num_pages++);
+
     }
 
-    jQuery('.pagination').append("<li><a class=\"prev\">◀</a></li>");
+    //jQuery('.pagination').append("<li><a class=\"prev\">◀</a></li>");
 
     for(var i=1; i<=num_pages; i++){
+    //for(var i=1; i<=req_num_row; i++){
         jQuery('.pagination').append("<li><a>"+i+"</a></li>");
         jQuery('.pagination li:nth-child(2)').addClass("active");
         jQuery('.pagination a').addClass("pagination-link");
     }
 
-    jQuery('.pagination').append("<li><a class=\"next\">▶</a></li>");
+    //jQuery('.pagination').append("<li><a class=\"next\">▶</a></li>");
 
     $tr.each(function(i){
         jQuery(this).hide();
@@ -96,6 +105,7 @@ function pagination(){
         }
     });
 
+    //클릭 이벤트
     jQuery('.pagination a').click('.pagination-link', function(e){
         e.preventDefault();
         $tr.hide();
@@ -131,6 +141,7 @@ function pagination(){
     });
 
 }
+
 /*
 jQuery('document').ready(function(){
     //pagination();

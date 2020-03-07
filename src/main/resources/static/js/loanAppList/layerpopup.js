@@ -48,12 +48,18 @@ function layer_popup(el){
             "CHNG_ID" : "TEST"//$('#sCountry').val(),
 
         }
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
         $.ajax({
             url: "insertCheat",
             type: "POST",
             data:  sendData,
             async: false, //동기처리
             dataType : "json",
+            beforeSend : function(xhr)
+            {
+                xhr.setRequestHeader(header,token);
+            },
             //contentType : "application/json; charset=utf-8",
             success: function(data){
                 //성공시 창을 닫는다

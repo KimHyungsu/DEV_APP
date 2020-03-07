@@ -4,12 +4,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="_csrf" th:content="${_csrf.token}"><meta name="_csrf_header" th:content="${_csrf.headerName}">
   <title>대출신청정보확인</title>
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
   <link rel="stylesheet" href="/../../css/loanAppList/style.css">
   <link rel="stylesheet" href="/../../css/loanAppList/layerpopup.css">
+  <link rel="stylesheet" href="/../../css/loanAppList/search.css">
   <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+
   <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
 
 </head>
@@ -20,7 +23,15 @@
 <div class="container">
   <br>
   <br>
+  <!--<img src="/../../img/logo.png">-->
   <h2>이름, 전화번호 등으로 검색해보세요</h2>
+  <h2>LoanCheat</h2>
+  <!--
+  <div class="search-wrapper cf">
+    <input type="text" placeholder="Search here..." required="">
+    <button type="button" id = "btn-search">Search</button>
+  </div>
+  -->
   <input type="text" class="input_text" name="CUST_NM" id="CUST_NM" placeholder="Name">
   <input type="text" class="input_text" name="PHONE_NO" id="PHONE_NO" placeholder="phone">
   <br>
@@ -73,7 +84,7 @@
       </div>
     </div>
   </div>
-  <hr class="hr_st"/>
+  <!--<hr class="hr_st"/>-->
   <table id="table" class="table table-bordered table-hover">
     <!--
     <thead>

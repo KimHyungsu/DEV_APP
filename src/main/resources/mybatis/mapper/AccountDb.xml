@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bthcpn.app.mapper.AccountMapper">
+
+    <select id="findById" resultType="com.bthcpn.app.dto.Account">
+        SELECT * FROM CPNAPP.MEMBER WHERE id=#{id}
+    </select>
+
+    <select id="getAuthorities" resultType="MAP">
+        SELECT authority_name FROM CPNAPP.MEMBER_AUTHORITY WHERE id=#{id}
+    </select>
+
+    <insert id="insertUser">
+        <!--INSERT INTO CPNAPP.MEMBER VALUES(#{account.id},#{account.password},#{account.isAccountNonExpired},#{account.isAccountNonLocked},#{account.isCredentialsNonExpired},#{account.isEnabled})-->
+        INSERT INTO CPNAPP.MEMBER
+        VALUES
+        (
+        #{account.id}
+        ,#{account.password}
+        ,#{account.isAccountNonExpired}
+        ,#{account.isAccountNonLocked}
+        ,#{account.isCredentialsNonExpired}
+        ,#{account.isEnabled}
+        )
+    </insert>
+
+    <insert id="insertUserAutority">
+        <!--@Insert("INSERT INTO CPNAPP.MEMBER_AUTHORITY VALUES(#{id},#{autority})")-->
+        INSERT INTO CPNAPP.MEMBER_AUTHORITY
+        VALUES
+        (
+        #{id}
+        ,#{autority}
+        )
+    </insert>
+
+</mapper>

@@ -3,6 +3,7 @@
       xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>어드민매뉴선택</title>
    <!-- <link rel="stylesheet" href="./style.css">-->
     <link rel="stylesheet" href="/../../../css/choiceAdminMenu/style.css">
@@ -11,6 +12,7 @@
 <body>
 <!-- partial:index.partial.html -->
 <div id="container">
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
     <div>
     <button class="learn-more" onclick = "location.href = '/cheatPage'">
     <span class="circle" aria-hidden="true">
