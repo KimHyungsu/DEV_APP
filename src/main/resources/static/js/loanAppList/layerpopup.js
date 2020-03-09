@@ -56,9 +56,11 @@ function layer_popup(el){
             data:  sendData,
             async: false, //동기처리
             dataType : "json",
-            beforeSend : function(xhr)
-            {
+            beforeSend:function(xhr){
+                //progress image open
                 xhr.setRequestHeader(header,token);
+                //target.appendChild(spinner.el);
+
             },
             //contentType : "application/json; charset=utf-8",
             success: function(data){
@@ -72,10 +74,6 @@ function layer_popup(el){
             error: function(){
                 alert("simpleWithObject err");
                 //location.reload();
-            },
-            beforeSend:function(){
-                //progress image open
-                target.appendChild(spinner.el);
             },
             complete:function(){
                 //progress image close
