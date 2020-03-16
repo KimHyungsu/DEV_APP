@@ -5,7 +5,8 @@
 <mapper namespace="com.bthcpn.app.mapper.CheatMapper">
 
     <select id="searchCheat" resultType="Map">
-        select BASE_DT
+        select SEQ
+        ,BASE_DT
         ,CUST_NM
         /*,PHONE_NO*/
         ,CASE WHEN CONCAT(SUBSTRING_INDEX(SUBSTRING_INDEX(PHONE_NO,'-',2),'-',-1)) = #{PHONE_NO}
