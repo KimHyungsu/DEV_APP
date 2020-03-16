@@ -43,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .defaultSuccessUrl("/index",true)
                     .successHandler(successHandler()) //로그인 성공시 핸들
                     .failureHandler(failureHandler()) //로그인 실패시 핸들
-                    //.failureUrl("/login_vender?error=true")
+                    .failureUrl("/login_vender?error=true")
                     .permitAll()
                 .and()
                 .logout()
@@ -74,7 +74,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new LoginSuccessHandler();
     }
 
-    //로그인 실패 빈 주
+    //로그인 실패 빈 주입
     @Bean
     public AuthenticationFailureHandler failureHandler() {
         return new LoginFailureHandler();

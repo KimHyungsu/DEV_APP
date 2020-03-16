@@ -5,14 +5,36 @@
 <mapper namespace="com.bthcpn.app.mapper.CheatMapper">
 
     <select id="searchCheat" resultType="Map">
-        select *
+        select BASE_DT
+        ,CUST_NM
+        /*,PHONE_NO*/
+        ,CASE WHEN CONCAT(SUBSTRING_INDEX(SUBSTRING_INDEX(PHONE_NO,'-',2),'-',-1)) = #{PHONE_NO}
+        OR CONCAT(SUBSTRING_INDEX(PHONE_NO,'-',-1)) = #{PHONE_NO}
+        THEN
+        CONCAT(CONCAT(SUBSTRING_INDEX(PHONE_NO,'-',1)),'-',
+        CASE WHEN CONCAT(SUBSTRING_INDEX(SUBSTRING_INDEX(PHONE_NO,'-',2),'-',-1)) = #{PHONE_NO}
+        THEN '****' ELSE CONCAT(SUBSTRING_INDEX(SUBSTRING_INDEX(PHONE_NO,'-',2),'-',-1)) END,'-',
+        CASE WHEN CONCAT(SUBSTRING_INDEX(PHONE_NO,'-',-1)) = #{PHONE_NO}
+        THEN '****' ELSE CONCAT(SUBSTRING_INDEX(PHONE_NO,'-',-1)) END
+        )
+        ELSE <![CDATA[ CONCAT(CONCAT(SUBSTRING_INDEX(PHONE_NO,'-',1)),'-****',CONCAT(SUBSTRING_INDEX(PHONE_NO,'-',-1))) ]]>
+        END AS PHONE_NO
+        ,BIRTH_YMD
+        ,SALARY_DIV_NM
+        ,ING_DIV_NM
+        ,COUNTRY_NM
+        ,INCOME_AMT
+        ,OUT_AMT
+        ,MEMO
+        ,RGST_ID
+        ,CHNG_ID
         from CPNAPP.USER_CHEAT
         where 1=1
         <if test="CUST_NM != null and !CUST_NM.equals('')">
             AND CUST_NM LIKE CONCAT('%',#{CUST_NM},'%')
         </if>
         <if test="PHONE_NO != null and !PHONE_NO.equals('')">
-            AND PHONE_NO LIKE CONCAT('%',#{PHONE_NO},'%')
+            AND REPLACE(PHONE_NO,'-','') LIKE CONCAT('%',#{PHONE_NO},'%')
         </if>
         order by 1 desc
     </select>

@@ -36,7 +36,7 @@ function layer_popup(el){
         var sendData = {
             "BASE_DT" : $('#sDate').val() ,
             "CUST_NM" : $('#sName').val(),
-            "PHONE_NO" : $('#sPhone').val(),
+            "PHONE_NO" : $('#sPhone1').val()+'-'+$('#sPhone2').val()+'-'+$('#sPhone3').val(),
             "BIRTH_YMD" : $('#sBirthYMD').val(),
             "SALARY_DIV_NM" : $('#sSalaryDiv').val(),
             "ING_DIV_NM" : $('#sIngYn').val(),
