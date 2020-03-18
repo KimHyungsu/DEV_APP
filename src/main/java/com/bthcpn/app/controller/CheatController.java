@@ -86,7 +86,9 @@ public class CheatController {
                 + "\n등록자ID   : " + RGST_ID
                 + "\n수정자ID   : " + CHNG_ID
         );
-
+        if(ING_DIV_NM == ""){
+            ING_DIV_NM = "조회";
+        }
         cheatService.insertCheat(BASE_DT.replace("-",""),
                                 CUST_NM,
                                 PHONE_NO,

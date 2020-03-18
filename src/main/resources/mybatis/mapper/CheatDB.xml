@@ -6,7 +6,7 @@
 
     <select id="searchCheat" resultType="Map">
         select SEQ
-        ,BASE_DT
+        ,CONCAT(SUBSTR(BASE_DT,1,4),'-',SUBSTR(BASE_DT,5,2),'-',SUBSTR(BASE_DT,7,2)) as BASE_DT
         ,CUST_NM
         /*,PHONE_NO*/
         ,CASE WHEN CONCAT(SUBSTRING_INDEX(SUBSTRING_INDEX(PHONE_NO,'-',2),'-',-1)) = #{PHONE_NO}

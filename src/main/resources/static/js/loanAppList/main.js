@@ -28,12 +28,12 @@ $('#btn-search').on('click', function(){
                             '      <th scope="col">고객명</th>\n' +
                             '      <th scope="col">휴대전화번호</th>\n' +
                             '      <th scope="col">생년월일</th>\n' +
-                            '      <th scope="col">소득구분명</th>\n' +
+                            //'      <th scope="col">소득구분명</th>\n' +
                             '      <th scope="col">진행구분명</th>\n' +
                             '      <th scope="col">지역명</th>\n' +
-                            '      <th scope="col">소득금액</th>\n' +
+                            //'      <th scope="col">소득금액</th>\n' +
                             '      <th scope="col">대출금액</th>\n' +
-                            '      <th scope="col">메모</th>\n' +
+                            //'      <th scope="col">메모</th>\n' +
                             '    </tr>\n' +
                             '    </thead>' +
                 '';
@@ -45,12 +45,12 @@ $('#btn-search').on('click', function(){
                 tableData += '<td class="col col-3" data-label="고객명">'+value.CUST_NM+'</td>';
                 tableData += '<td class="col col-4" data-label="휴대전화번호">'+value.PHONE_NO+'</td>';
                 tableData += '<td class="col col-5" data-label="생년월일">'+value.BIRTH_YMD+'</td>';
-                tableData += '<td class="col col-6" data-label="소득구분명">'+value.SALARY_DIV_NM+'</td>';
+                //tableData += '<td class="col col-6" data-label="소득구분명">'+value.SALARY_DIV_NM+'</td>';
                 tableData += '<td class="col col-7" data-label="진행구분명">'+value.ING_DIV_NM+'</td>';
                 tableData += '<td class="col col-8" data-label="지역명">'+value.COUNTRY_NM+'</td>';
-                tableData += '<td class="col col-9" data-label="소득금액">'+value.INCOME_AMT+'</td>';
+                //tableData += '<td class="col col-9" data-label="소득금액">'+value.INCOME_AMT+'</td>';
                 tableData += '<td class="col col-10" data-label="대출금액">'+value.OUT_AMT+'</td>';
-                tableData += '<td class="col col-11" data-label="메모">'+value.MEMO+'</td>';
+                //tableData += '<td class="col col-11" data-label="메모">'+value.MEMO+'</td>';
                 tableData += '<tr>';
             });
             tableData += '</tbody>';

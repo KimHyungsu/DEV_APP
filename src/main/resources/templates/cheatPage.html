@@ -44,19 +44,21 @@
             <input type="text" class="input_text_phone" name="sPhone" id="sPhone2" placeholder="0000"><a>-</a>
             <input type="text" class="input_text_phone" name="sPhone" id="sPhone3" placeholder="0000"><br>
             <input type="text" class="input_text" name="sBirthYMD" id="sBirthYMD" placeholder="생년월일(YYYYMMDD)"><br>
-          <input type="text" class="input_text" name="sIncomeAmt" id="sIncomeAmt" placeholder="소득금액(만원)"><br>
+          <!--<input type="text" class="input_text" name="sIncomeAmt" id="sIncomeAmt" placeholder="소득금액(만원)"><br>-->
           <input type="text" class="input_text" name="sOutAmt" id="sOutAmt" placeholder="대출금액(만원)"><br>
+            <!--
             <select name="sSalaryDiv" id="sSalaryDiv" class="input_select">
               <option value="">소득구분</option>
               <option value="자영업">자영업</option>
               <option value="직장인">직장인</option>
               <option value="기타">기타</option>
             </select><br>
+            -->
             <select name="sIngYn" id="sIngYn" class="input_select">
               <option value="">진행여부</option>
-              <option value="진행중">진행중</option>
-              <option value="완료">완료</option>
-              <option value="사기">사기</option>
+              <option value="조회">조회</option>
+              <option value="승인">승인</option>
+              <option value="사고">사고</option>
             </select><br>
             <select name="sCountry"  id="sCountry" class="input_select">
               <option value="">지역</option>
@@ -67,7 +69,7 @@
               <option value="부산">부산</option>
               <option value="기타">기타</option>
             </select><br>
-            <input type="text" class="input_text" name="sMemo" id="sMemo" placeholder="메모"><br>
+            <!--<input type="text" class="input_text" name="sMemo" id="sMemo" placeholder="메모"><br>-->
           </p>
           <div class="btn-r">
             <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
