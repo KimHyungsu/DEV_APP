@@ -1,0 +1,101 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+  <head>
+  	<title>관리자</title>
+    <meta charset="utf-8">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <!-- csrf 토큰 -->
+      <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+      <!-- default header name is X-CSRF-TOKEN -->
+      <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
+
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" type="text/css" href="/../../../css/adminPageHome/style.css">
+      <link rel="stylesheet" type="text/css" href="/../../../css/adminPageMember/style.css">
+
+      <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+
+  </head>
+  <body>
+		
+		<div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar">
+				<div class="custom-menu">
+					<button type="button" id="sidebarCollapse" class="btn btn-primary">
+	          <i class="fa fa-bars"></i>
+	          <span class="sr-only">Toggle Menu</span>
+	        </button>
+        </div>
+	  		<h1><a href="index.html" class="logo">대출플랫폼ADMIN</a></h1>
+        <ul class="list-unstyled components mb-5">
+            <!--
+          <li class="active">
+            <a href="#"><span class="fa fa-home mr-3"></span> Homepage</a>
+          </li>
+          -->
+          <li>
+              <a href="/adminPageHome"><span class="fa fa-user mr-3"></span> 대시보드</a>
+          </li>
+          <li>
+            <a href="/adminPageMember"><span class="fa fa-sticky-note mr-3"></span> 회원</a>
+          </li>
+          <li>
+            <a href="#"><span class="fa fa-sticky-note mr-3"></span> 업체</a>
+          </li>
+          <li>
+            <a href="#"><span class="fa fa-paper-plane mr-3"></span> 설정</a>
+          </li>
+          <li>
+            <a href="#"><span class="fa fa-paper-plane mr-3"></span> 정보</a>
+          </li>
+        </ul>
+
+    	</nav>
+
+        <!-- Page Content -->
+      <div id="content" class="p-4 p-md-5 pt-5">
+
+        <h2 class="mb-4">회원 페이지</h2>
+        <p>회원 페이지 입니다</p>
+          <input type="button" class="input_blue_button" value="검색111" id="btn-search">
+          <table id="table" class="table table-hover table-striped">
+              <thead>
+              <tr>
+                  <th>seq</th>
+                  <th>custNm</th>
+                  <th>email</th>
+                  <th>carrierCd</th>
+                  <th>carrierNm</th>
+                  <th>phoneNo</th>
+                  <th>jboCd</th>
+                  <th>jobNm</th>
+                  <th>incmAmt</th>
+                  <th>hopLoanAmt</th>
+              </tr>
+              </thead>
+
+              <!--
+              <tbody id="table_tbody">
+              </tbody>
+              -->
+          </table>
+      </div>
+
+        </div>
+
+
+    <!--<script src="/../../../js/adminPageHome/jquery.min.js"></script>-->
+        <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src='https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js'></script>
+        <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+    <script src="/../../../js/adminPageHome/popper.js"></script>
+    <script src="/../../../js/adminPageHome/bootstrap.min.js"></script>
+    <script src="/../../../js/adminPageHome/main.js"></script>
+        <script src="/../../../js/adminPageMember/main.js"></script>
+  </body>
+</html>

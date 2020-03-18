@@ -28,12 +28,6 @@ public class MainController {
         return "entSaveUsrInfo";
     }
 
-    //어드민페이지
-    @RequestMapping("/adminPageHome")
-    public String adminPageHome() throws Exception{
-        return "adminPageHome";
-    }
-
     @RequestMapping(value = "/sendSaveUsrInfo", method= RequestMethod.POST)
     public String sendSaveUsrInfo(@RequestParam("name") String name,
                                   @RequestParam("email") String email,
