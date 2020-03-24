@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.bthcpn.app.mapper.LoanCustInfoMapper">
+
+    <select id="loanCustInfo" resultType="com.bthcpn.app.dto.LoanCustInfoDto">
+
+        <!--SELECT user_account FROM CPNAPP.LOAN_CUST_INFO-->
+        select SEQ
+                /*,BASE_DT*/
+                ,CONCAT(SUBSTR(BASE_DT,1,4),'-',SUBSTR(BASE_DT,5,2),'-',SUBSTR(BASE_DT,7,2)) as BASE_DT
+                ,PHONE_NO
+                ,CUST_NM
+                ,APRV_AMT
+                ,COLT_AMT
+                /*,RODUND*/
+                /*,DATEDIFF(DATE_FORMAT(now(),'%Y%m%d'), DATE_FORMAT(BASE_DT, '%Y%m%d')) AS ROUND*/
+                <![CDATA[
+                , CASE WHEN DATEDIFF(DATE_FORMAT(now(),'%Y%m%d'), DATE_FORMAT(BASE_DT, '%Y%m%d')) <= 0
+                        THEN '수금시작전'
+                        WHEN DATEDIFF(DATE_FORMAT(now(),'%Y%m%d'), DATE_FORMAT(BASE_DT, '%Y%m%d')) >= USEDT_CNT
+                        THEN '수금종료'
+                        ELSE DATEDIFF(DATE_FORMAT(now(),'%Y%m%d'), DATE_FORMAT(BASE_DT, '%Y%m%d'))
+                        END AS ROUND
+
+                ,USEDT_CNT
+                ,RGST_ID
+                ,RGST_DTTM
+                ,CHNG_ID
+                ,CHNG_DTTM
+                , CASE WHEN DATEDIFF(DATE_FORMAT(now(),'%Y%m%d'), DATE_FORMAT(BASE_DT, '%Y%m%d')) <= 0
+                        THEN '수금시작전'
+                        WHEN DATEDIFF(DATE_FORMAT(now(),'%Y%m%d'), DATE_FORMAT(BASE_DT, '%Y%m%d')) >= USEDT_CNT
+                        THEN '수금종료'
+                        ELSE ROUND(COLT_AMT/USEDT_CNT,2)
+                        END AS TODAY_COLT_AMT
+                , CASE WHEN DATEDIFF(DATE_FORMAT(now(),'%Y%m%d'), DATE_FORMAT(BASE_DT, '%Y%m%d')) <= 0
+                        THEN '수금시작전'
+                        WHEN DATEDIFF(DATE_FORMAT(now(),'%Y%m%d'), DATE_FORMAT(BASE_DT, '%Y%m%d')) >= USEDT_CNT
+                        THEN COLT_AMT
+                        ELSE ROUND(COLT_AMT/USEDT_CNT
+                        *DATEDIFF(DATE_FORMAT(now(),'%Y%m%d'), DATE_FORMAT(BASE_DT, '%Y%m%d'))
+                        ,2) END AS TOT_COLT_AMT
+                ]]>
+        from CPNAPP.LOAN_CUST_INFO
+        order by 1 desc
+    </select>
+
+    <insert id="insertloanCustInfo">
+
+        INSERT INTO CPNAPP.LOAN_CUST_INFO
+        (
+        BASE_DT,
+        PHONE_NO,
+        CUST_NM,
+        APRV_AMT,
+        COLT_AMT,
+        USEDT_CNT
+        )
+        VALUES
+        (
+        #{loanCustInfoDto.BASE_DT}
+        ,#{loanCustInfoDto.PHONE_NO}
+        ,#{loanCustInfoDto.CUST_NM}
+        ,#{loanCustInfoDto.APRV_AMT}
+        ,#{loanCustInfoDto.COLT_AMT}
+        ,#{loanCustInfoDto.USEDT_CNT}
+        )
+    </insert>
+
+</mapper>

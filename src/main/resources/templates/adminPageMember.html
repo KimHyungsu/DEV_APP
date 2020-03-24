@@ -18,7 +18,10 @@
       <link rel="stylesheet" type="text/css" href="/../../../css/adminPageHome/style.css">
       <link rel="stylesheet" type="text/css" href="/../../../css/adminPageMember/style.css">
 
-      <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+      <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+      <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
+      <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css">
+      <link rel="stylesheet" href="/../../../css/datatables/editor.dataTables.css">
 
   </head>
   <body>
@@ -62,26 +65,37 @@
 
         <h2 class="mb-4">회원 페이지</h2>
         <p>회원 페이지 입니다</p>
-          <input type="button" class="input_blue_button" value="검색111" id="btn-search">
-          <table id="table" class="table table-hover table-striped">
+          <!--
+          <input type="button" class="input_blue_button" value="검색" id="btn-search">
+          -->
+          <table id="table" class="table table-hover table-striped" style="width:100%">
               <thead>
-              <tr>
-                  <th>seq</th>
-                  <th>custNm</th>
-                  <th>email</th>
-                  <th>carrierCd</th>
-                  <th>carrierNm</th>
-                  <th>phoneNo</th>
-                  <th>jboCd</th>
-                  <th>jobNm</th>
-                  <th>incmAmt</th>
-                  <th>hopLoanAmt</th>
-              </tr>
+                  <tr>
+                      <th>순번</th>
+                      <th>기준일자</th>
+                      <th>휴대전화번호</th>
+                      <th>고객명</th>
+                      <th>승인금액</th>
+                      <th>회수금액</th>
+                      <th>사용일수</th>
+                      <th>회차</th>
+                      <th>금회차회수금액</th>
+                      <th>회수금액합산</th>
+                  </tr>
               </thead>
-
               <!--
-              <tbody id="table_tbody">
-              </tbody>
+              <tfoot>
+                  <tr>
+                      <th>seq</th>
+                      <th>base_DT</th>
+                      <th>phone_NO</th>
+                      <th>cust_NM</th>
+                      <th>aprv_AMT</th>
+                      <th>colt_AMT</th>
+                      <th>round</th>
+                      <th>usedt_CNT</th>
+                  </tr>
+              </tfoot>
               -->
           </table>
       </div>
@@ -89,13 +103,17 @@
         </div>
 
 
-    <!--<script src="/../../../js/adminPageHome/jquery.min.js"></script>-->
-        <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script src='https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js'></script>
-        <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src='https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js'></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+    <script src="/../../../js/datatables/dataTables.editor.min.js"></script>
+
     <script src="/../../../js/adminPageHome/popper.js"></script>
     <script src="/../../../js/adminPageHome/bootstrap.min.js"></script>
     <script src="/../../../js/adminPageHome/main.js"></script>
-        <script src="/../../../js/adminPageMember/main.js"></script>
+    <script src="/../../../js/adminPageMember/main.js"></script>
+
+
   </body>
 </html>

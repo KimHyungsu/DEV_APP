@@ -34,7 +34,7 @@ function layer_popup(el){
     $el.find('a.btn-layerSave').click(function(){
         //alert('저장');
         var sendData = {
-            "BASE_DT" : $('#sDate').val() ,
+            "BASE_DT" : $('#sDate').val(),
             "CUST_NM" : $('#sName').val(),
             "PHONE_NO" : $('#sPhone1').val()+'-'+$('#sPhone2').val()+'-'+$('#sPhone3').val(),
             "BIRTH_YMD" : $('#sBirthYMD').val(),
@@ -46,7 +46,6 @@ function layer_popup(el){
             "MEMO" : '',//$('#sMemo').val(),
             "RGST_ID" : "TEST",//$('#sCountry').val(),
             "CHNG_ID" : "TEST"//$('#sCountry').val(),
-
         }
         var token = $("meta[name='_csrf']").attr("content");
         var header = $("meta[name='_csrf_header']").attr("content");
