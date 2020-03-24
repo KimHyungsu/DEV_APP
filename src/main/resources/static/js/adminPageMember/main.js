@@ -123,7 +123,11 @@ $(document).ready(function() {
 			{ extend: "create", editor: editor },
 			{ extend: "edit",   editor: editor },
 			{ extend: "remove", editor: editor }
-		]
+		],
+		rowReorder:{
+			selector: 'td:nth-child(2)'
+		},
+		responsive: true
 	} );
 } );
 
